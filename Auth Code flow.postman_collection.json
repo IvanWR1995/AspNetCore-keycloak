@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "521f84af-ce2e-4e08-b5b1-0e77459c21d6",
+		"name": "Auth Code flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get auth code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:28080/realms/my-realm/protocol/openid-connect/auth?response_type=code&client_id=auth-test-client&redirect_uri=http://localhost:1234/callback&scope=openid&state=something",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28080",
+					"path": [
+						"realms",
+						"my-realm",
+						"protocol",
+						"openid-connect",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "client_id",
+							"value": "auth-test-client"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:1234/callback"
+						},
+						{
+							"key": "scope",
+							"value": "openid"
+						},
+						{
+							"key": "state",
+							"value": "something"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tokens",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:1234/callback",
+							"type": "default"
+						},
+						{
+							"key": "code",
+							"value": "54231909-0f34-4e97-ba81-b2b6303c8fe3.9bd9d81c-a32e-408e-bc91-bfc47ec6d679.62d653d4-5448-4134-b3e3-f32aca9adc11",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "zSsmPKlxMLbpymyYdrtmpSWWevrOrsEW",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "auth-test-client",
+							"type": "default"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:28080/realms/my-realm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28080",
+					"path": [
+						"realms",
+						"my-realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
